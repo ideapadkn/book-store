@@ -6,6 +6,10 @@ $black: #000;
 $white: #fff;
 $main-color: #173F5F;
 
+:root {
+  --index: calc(1vw + 1vh);
+}
+
 a {
   color: $main-color;
 }
@@ -41,6 +45,7 @@ a {
     .socials {
       display: flex;
       gap: 0 30px;
+      font-size: calc(var(--index) * .7);
 
       &-link {
         animation: all .4s ease;
@@ -52,6 +57,10 @@ a {
     }
   }
 
+  hr {
+    margin-top: 0px;
+  }
+
   // PROFILE
   .profile {
     display: flex;
@@ -60,11 +69,21 @@ a {
     height: 70px;
     margin-bottom: 20px;
 
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
     &-img {
       img {
         width: 60px;
         height: 60px;
         border-radius: 10rem;
+      }
+
+      @media (max-width: 767px) {
+        display: none;
       }
     }
 
@@ -76,12 +95,16 @@ a {
         border-radius: 10px;
         width: 180%;
 
+        &:focus {
+          outline: none;
+        }
+
         @media (max-width: 1200px) {
           width: 100%;
         }
 
-        &:focus {
-          outline: none;
+        @media (max-width: 767px) {
+          width: 80%;
         }
       }
     }
@@ -93,6 +116,7 @@ a {
       .menu-item {
         text-transform: uppercase;
         font-weight: 550;
+        font-size: calc(var(--index) * .7);
 
         &:hover {
           i {
@@ -123,17 +147,13 @@ a {
         display: flex;
         gap: 0 40px;
 
-        .border {
-          border-right: 1px solid $white;
-          padding-right: 30px;
-        }
-
         .menu-item {
 
           a {
             color: $white;
             text-transform: uppercase;
             font-weight: normal;
+            font-size: calc(var(--index) * .7);
           }
 
           .active {
@@ -143,4 +163,71 @@ a {
       }
     }
   }
+
+  // HERO
+  .hero {
+    background-image:
+      linear-gradient(85deg, #003a60 0%, #fff 100%);
+    height: 75vh;
+
+    &-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75vh;
+
+      .swiper {
+        width: 600px;
+        height: 400px;
+
+        &-slide {
+          .title {
+            font-size: calc(var(--index) * 2.5);
+            line-height: 100%;
+            color: $white;
+
+          }
+
+          .text {
+            font-size: calc(var(--index) * 1);
+            margin: 25px 0 40px 0;
+            color: #e1e1e1;
+          }
+
+          .btn {
+            border: 1px solid $white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: $white;
+            animation: all .4s ease;
+
+            i {
+              margin-right: 8px;
+            }
+
+            &:hover {
+              background-color: #003a60;
+
+              i {
+                font-weight: 550;
+              }
+            }
+          }
+        }
+
+        &-pagination {
+          width: 20%;
+        }
+      }
+
+      .banner {
+        img {
+          width: 550px;
+          height: 400px;
+        }
+      }
+    }
+
+  }
+
 }
